@@ -21,7 +21,7 @@ public class NotificationController {
     @MessageMapping("/chat")  // Handles messages sent to /app/chat
     @SendTo("/topic/messages") // Broadcasts to all subscribers of /topic/messages
     public ChatMessage sendMessage(ChatMessage message) throws Exception {
-        message.setTimestamp(LocalDateTime.now().toString());
+//        message.setTimestamp(LocalDateTime.now().toString());
         return message;
     }
 }
