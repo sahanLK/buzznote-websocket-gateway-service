@@ -1,0 +1,21 @@
+spring:
+  application:
+    name: buzznote-websocket-gateway-service
+
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: ${RABBITMQ_USERNAME}
+    password: ${RABBITMQ_PASSWORD}
+
+server:
+  port: 8084
+  servlet:
+    context-path: /api
+
+logging:
+  level:
+    org.springframework.security: DEBUG
+    org.springframework.web: DEBUG
+    com.:
+      buzznote: DEBUG
