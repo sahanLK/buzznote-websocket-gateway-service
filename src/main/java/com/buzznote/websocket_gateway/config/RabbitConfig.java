@@ -14,10 +14,28 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class RabbitConfig {
+    public static final String SYSTEM_MESSAGE_QUEUE = "system.message.queue";
+    public static final String SYSTEM_MESSAGE_EXCHANGE = "system.message.exchange";
+    public static final String SYSTEM_MESSAGE_ROUTING_KEY = "system.message";
+
     public static final String SYSTEM_NOTIFICATION_QUEUE = "system.notification.queue";
     public static final String SYSTEM_NOTIFICATION_EXCHANGE = "system.notification.exchange";
     public static final String SYSTEM_NOTIFICATION_ROUTING_KEY = "system.notification";
 
+    @Bean
+    public Queue systemMessageQueue() {
+        return new Queue(SYSTEM_MESSAGE_QUEUE);
+    }
+
+    @Bean
+    public DirectExchange systemMessageExchange() {
+        return new DirectExchange(SYSTEM_MESSAGE_EXCHANGE);
+    }
+
+    @Bean
+    public Binding bindingSystemMessageQueue() {
+        return BindingBuilder.bind(systemMessageQueue()).to(systemMessageExchange()).with(SYSTEM_MESSAGE_ROUTING_KEY);
+    }
 
     @Bean
     public Queue systemNotificationQueue() {

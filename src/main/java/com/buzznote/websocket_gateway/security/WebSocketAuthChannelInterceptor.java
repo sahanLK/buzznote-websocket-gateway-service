@@ -20,7 +20,7 @@ public class WebSocketAuthChannelInterceptor implements ChannelInterceptor {
             Principal user = (Principal) accessor.getSessionAttributes().get("user");
             if (user != null) {
                 System.out.println("User set");
-                accessor.setUser(user); // ✅ Crucial line
+                accessor.setUser(user);
                 System.out.println("WebSocket user: " + user.getName());
             }
         }
